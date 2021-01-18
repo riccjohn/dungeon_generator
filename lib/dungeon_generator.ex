@@ -1,4 +1,14 @@
 defmodule DungeonGenerator do
+  @moduledoc """
+  Main module to generate a dungeon
+  """
+
+  @doc """
+  Generates a dungeon with all the necessary information
+
+  ## Example
+    iex> DungeonGenerator.generate
+  """
   def generate do
     dungeon = %{
       :status => nil,
