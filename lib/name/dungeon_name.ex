@@ -182,53 +182,73 @@ defmodule DungeonGenerator.Name do
 
     case format do
       "something-noun" ->
-        something = Enum.random(something_table)
-          |> String.capitalize
-        noun = Enum.random(noun_table)
-          |> String.capitalize
+        something =
+          Enum.random(something_table)
+          |> String.capitalize()
+
+        noun =
+          Enum.random(noun_table)
+          |> String.capitalize()
 
         "#{something} #{noun}"
 
       "someones-noun" ->
-        someone = Enum.random(someones_table)
-          |> String.capitalize
-        noun = Enum.random(noun_table)
-          |> String.capitalize
+        someone =
+          Enum.random(someones_table)
+          |> String.capitalize()
 
-      if String.slice( someone, String.length(someone) - 1, String.length(someone) ) == "s" do
-        "#{someone}' #{noun}"
-      else
-        "#{someone}'s #{noun}"
-      end
+        noun =
+          Enum.random(noun_table)
+          |> String.capitalize()
+
+        if String.slice(someone, String.length(someone) - 1, String.length(someone)) == "s" do
+          "#{someone}' #{noun}"
+        else
+          "#{someone}'s #{noun}"
+        end
 
       "the-noun-something" ->
-        noun = Enum.random(noun_table)
-          |> String.capitalize
-        something = Enum.random(of_something_table)
-          |> String.capitalize
+        noun =
+          Enum.random(noun_table)
+          |> String.capitalize()
+
+        something =
+          Enum.random(of_something_table)
+          |> String.capitalize()
 
         "The #{noun} of #{something}"
 
       "the-something-noun-someone" ->
-        something = Enum.random(something_table)
-          |> String.capitalize
-        noun = Enum.random(noun_table)
-          |> String.capitalize
-        someone = Enum.random(someones_table)
-          |> String.capitalize
+        something =
+          Enum.random(something_table)
+          |> String.capitalize()
+
+        noun =
+          Enum.random(noun_table)
+          |> String.capitalize()
+
+        someone =
+          Enum.random(someones_table)
+          |> String.capitalize()
 
         "The #{something} #{noun} of #{someone}"
 
       "the-something-noun-someone-the-title" ->
+        something =
+          Enum.random(something_table)
+          |> String.capitalize()
 
-        something = Enum.random(something_table)
-          |> String.capitalize
-        noun = Enum.random(noun_table)
-          |> String.capitalize
-        person = Enum.random(of_someone_table)
-          |> String.capitalize
-        the_something = Enum.random(someone_the_something)
-          |> String.capitalize
+        noun =
+          Enum.random(noun_table)
+          |> String.capitalize()
+
+        person =
+          Enum.random(of_someone_table)
+          |> String.capitalize()
+
+        the_something =
+          Enum.random(someone_the_something)
+          |> String.capitalize()
 
         "The #{something} #{noun} of #{person} the #{the_something}"
     end
