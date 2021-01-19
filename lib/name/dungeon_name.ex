@@ -184,13 +184,17 @@ defmodule DungeonGenerator.Name do
       #  need to add capital letters
       "something-noun" ->
         something = Enum.random(something_table)
+          |> String.capitalize
         noun = Enum.random(noun_table)
+          |> String.capitalize
 
         "#{something} #{noun}"
 
       "someones-noun" ->
         someone = Enum.random(someones_table)
+          |> String.capitalize
         noun = Enum.random(noun_table)
+          |> String.capitalize
 
       if String.slice( someone, String.length(someone) - 1, String.length(someone) ) == "s" do
         "#{someone}' #{noun}"
@@ -200,24 +204,32 @@ defmodule DungeonGenerator.Name do
 
       "the-noun-something" ->
         noun = Enum.random(noun_table)
+          |> String.capitalize
         something = Enum.random(of_something_table)
+          |> String.capitalize
 
         "The #{noun} of #{something}"
 
       "the-something-noun-someone" ->
         something = Enum.random(something_table)
+          |> String.capitalize
         noun = Enum.random(noun_table)
+          |> String.capitalize
         someone = Enum.random(someones_table)
-
+          |> String.capitalize
 
         "The #{something} #{noun} of #{someone}"
 
       "the-something-noun-someone-the-title" ->
 
         something = Enum.random(something_table)
+          |> String.capitalize
         noun = Enum.random(noun_table)
+          |> String.capitalize
         person = Enum.random(of_someone_table)
+          |> String.capitalize
         the_something = Enum.random(someone_the_something)
+          |> String.capitalize
 
         "The #{something} #{noun} of #{person} the #{the_something}"
     end
