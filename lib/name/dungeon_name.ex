@@ -181,7 +181,6 @@ defmodule DungeonGenerator.Name do
     format = Enum.random(formats)
 
     case format do
-      #  need to add capital letters
       "something-noun" ->
         something = Enum.random(something_table)
           |> String.capitalize
