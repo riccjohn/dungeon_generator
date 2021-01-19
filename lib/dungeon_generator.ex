@@ -24,7 +24,8 @@ defmodule DungeonGenerator do
     }
 
     dungeon
-    |> DungeonGenerator.Status.add_dungeon_status()
-    |> DungeonGenerator.Name.add_dungeon_name()
+    |> Map.put(:status, DungeonGenerator.Status.rand_status())
+    |> Map.put(:name, DungeonGenerator.Name.generate_name())
+    |> Map.put(:reason_to_visit, DungeonGenerator.Reason.generate_reason())
   end
 end
