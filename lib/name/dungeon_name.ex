@@ -192,9 +192,11 @@ defmodule DungeonGenerator.Name do
         someone = Enum.random(someones_table)
         noun = Enum.random(noun_table)
 
-        # decide whether to use ' or 's
-
+      if String.slice( someone, String.length(someone) - 1, String.length(someone) ) == "s" do
+        "#{someone}' #{noun}"
+      else
         "#{someone}'s #{noun}"
+      end
 
       "the-noun-something" ->
         noun = Enum.random(noun_table)
