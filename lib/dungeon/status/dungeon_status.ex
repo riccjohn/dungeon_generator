@@ -1,13 +1,15 @@
 defmodule DungeonGenerator.Status do
+
+  def reasons do
+    reasons = [
+      "it is nearly forgotten and no one that enters may leave.",
+      "the place was invaded.",
+      "of the curse."
+    ]
+  end
+
   def rand_status do
     status = [true, false]
-
-    reasons = [
-      "because it is nearly forgotten and no one that enters may leave.",
-      "because the place was invaded.",
-      "because of the curse."
-    ]
-
     status = Enum.random(status)
 
     if status do
