@@ -1,5 +1,4 @@
 defmodule DungeonGenerator.Occupants do
-
   def get_occupants do
     [
       "A vengeful cabal of undead porcelain dolls.",
@@ -8,7 +7,7 @@ defmodule DungeonGenerator.Occupants do
       "Heretic cult lead by a possessed 11-year old.",
       "Desperate inquisitors dying slowly of a witch's curse.",
       "A Bark-Witch and her root-children.",
-      "Dissident courtiers dedicated to the occult.",
+      "Dissident courtiers dedicated to the occult."
     ]
   end
 

@@ -1,7 +1,6 @@
 defmodule DungeonGenerator.Status do
-
   def reasons do
-    reasons = [
+    [
       "it is nearly forgotten and no one that enters may leave.",
       "the place was invaded.",
       "of the curse."
@@ -15,7 +14,7 @@ defmodule DungeonGenerator.Status do
     if status do
       "Still active"
     else
-      "Inactive, because #{Enum.random(reasons)}"
+      "Inactive, because #{Enum.random(reasons())}"
     end
   end
 end

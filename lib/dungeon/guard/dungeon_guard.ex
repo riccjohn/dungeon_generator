@@ -6,7 +6,7 @@ defmodule DungeonGenerator.Guard do
       "Inquisitors. Possibly corrupt.",
       "A tangle of withered tendrils. They come alive!",
       "3 one-eyed scum playing dice.",
-      "Graves, pits, cracks and burrows. Concealed.",
+      "Graves, pits, cracks and burrows. Concealed."
     ]
   end
 

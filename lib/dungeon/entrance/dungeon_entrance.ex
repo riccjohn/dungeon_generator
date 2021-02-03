@@ -8,7 +8,7 @@ defmodule DungeonGenerator.Entrance do
       "A circle of obelisks. A hole in the ground.",
       "A gate inside a sarcophagus in Graven-Tosk.",
       "An impossibly large door.",
-      "Seven dead trees in The Valley of the Unfortunate Undead surround a simple door.",
+      "Seven dead trees in The Valley of the Unfortunate Undead surround a simple door."
     ]
   end
 

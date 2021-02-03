@@ -19,7 +19,7 @@ defmodule DungeonGenerator do
       :occupants => nil,
       :reason_to_visit => nil,
       :rooms => %{},
-      :status => nil,
+      :status => nil
     }
 
     dungeon

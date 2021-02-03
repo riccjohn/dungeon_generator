@@ -6,7 +6,7 @@ defmodule DungeonGenerator.Feature do
       "The infamous black salt wind.",
       "Portal to the land of the dead, soon ready.",
       "Strange bulbous flowers with angelic faces.",
-      "The items found here spring to life, and try to harm their new owners.",
+      "The items found here spring to life, and try to harm their new owners."
     ]
   end
 
