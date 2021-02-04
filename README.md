@@ -1,4 +1,6 @@
 # DungeonGenerator
+[![<riccjohn>](https://circleci.com/<gh>/<riccjohn>/<dungeon_generator>.svg?style=svg)](<LINK>)
+
 
 A heavy metal dungeon generator meant to be used with [Mörk Borg](https://morkborg.com/), but is game-agnostic aside from any monster stats.
 
