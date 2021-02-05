@@ -5,3 +5,5 @@ config :dungeon_generator, DungeonGenerator.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost"
+
+config :dungeon_generator, ecto_repos: [DungeonGenerator.Repo]
