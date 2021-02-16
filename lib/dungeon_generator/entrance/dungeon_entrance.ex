@@ -1,4 +1,16 @@
 defmodule DungeonGenerator.Entrance do
+  use Ecto.Schema
+
+  schema "entrances" do
+    field :text, :string
+  end
+
+  def changeset(entrance, params \\ %{}) do
+    entrance
+    |> Ecto.Changeset.cast(params, [:text])
+    |> Ecto.Changeset.validate_required([:text])
+  end
+
   def get_entrances do
     [
       "The gaping mouth of a church-sized glass skull.",
