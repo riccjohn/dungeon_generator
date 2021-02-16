@@ -9,6 +9,15 @@ defmodule DungeonGenerator do
   ## Example
     iex> DungeonGenerator.generate
   """
+  @features [
+    "300 emaciated, mutilated prisoners.",
+    "Stuck, extremely noisy doors.",
+    "The infamous black salt wind.",
+    "Portal to the land of the dead, soon ready.",
+    "Strange bulbous flowers with angelic faces.",
+    "The items found here spring to life, and try to harm their new owners."
+  ]
+
   @guardians [
     "A (probably) harmless, petrified wyvern.",
     "Rows upon rows of glass statues. One is alive.",
@@ -61,12 +70,16 @@ defmodule DungeonGenerator do
     dungeon
     |> Map.put(:danger, DungeonGenerator.Danger.generate_danger())
     |> Map.put(:entrance, DungeonGenerator.Entrance.generate_entrance())
-    |> Map.put(:feature, DungeonGenerator.Feature.generate_feature())
-    |> Map.put(:guardian, DungeonGenerator.generate_guardian())
+    |> Map.put(:feature, generate_feature())
+    |> Map.put(:guardian, generate_guardian())
     |> Map.put(:name, DungeonGenerator.Name.generate_name())
-    |> Map.put(:occupants, DungeonGenerator.generate_occupants())
-    |> Map.put(:reason_to_visit, DungeonGenerator.generate_reason())
-    |> Map.put(:status, DungeonGenerator.generate_status())
+    |> Map.put(:occupants, generate_occupants())
+    |> Map.put(:reason_to_visit, generate_reason())
+    |> Map.put(:status, generate_status())
+  end
+
+  def generate_feature do
+    Enum.random(@features)
   end
 
   def generate_guardian do
