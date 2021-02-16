@@ -9,6 +9,23 @@ defmodule DungeonGenerator do
   ## Example
     iex> DungeonGenerator.generate
   """
+  @dangers [
+    "A terrible, dormant curse about to be unleashed.",
+    "The entire dungeon is slowly sinking.",
+    "A lethal mechanism is about to activate."
+  ]
+
+  @entrances [
+    "The gaping mouth of a church-sized glass skull.",
+    "An inverted church. The climb to the door is perilous.",
+    "A gate between cracked ice on the Kergüs waste.",
+    "Blackened cliffside gate just above Lake Onda's surface.",
+    "A circle of obelisks. A hole in the ground.",
+    "A gate inside a sarcophagus in Graven-Tosk.",
+    "An impossibly large door.",
+    "Seven dead trees in The Valley of the Unfortunate Undead surround a simple door."
+  ]
+
   @features [
     "300 emaciated, mutilated prisoners.",
     "Stuck, extremely noisy doors.",
@@ -27,17 +44,6 @@ defmodule DungeonGenerator do
     "Graves, pits, cracks and burrows. Concealed."
   ]
 
-  @reasons [
-    "A promise of treasure and death",
-    "You are cursed. The Plague-Bearer who dwells in the dungeon can lift it, they say.",
-    "Rumors of an enormous treasure, presumably cursed.",
-    "A promise of answers to age-old questions.",
-    "You have been sentenced to Dungeon Death. Survive and be free.",
-    "A strange and hypnotic star guided you here.",
-    "A promise of answers to age-old questions.",
-    "Someone you know is supposed to have been dragged here."
-  ]
-
   @inactive_status_reasons [
     "it is nearly forgotten and no one that enters may leave.",
     "the place was invaded.",
@@ -54,6 +60,17 @@ defmodule DungeonGenerator do
     "Dissident courtiers dedicated to the occult."
   ]
 
+  @reasons [
+    "A promise of treasure and death",
+    "You are cursed. The Plague-Bearer who dwells in the dungeon can lift it, they say.",
+    "Rumors of an enormous treasure, presumably cursed.",
+    "A promise of answers to age-old questions.",
+    "You have been sentenced to Dungeon Death. Survive and be free.",
+    "A strange and hypnotic star guided you here.",
+    "A promise of answers to age-old questions.",
+    "Someone you know is supposed to have been dragged here."
+  ]
+
   def generate do
     dungeon = %{
       :danger => nil,
@@ -68,8 +85,8 @@ defmodule DungeonGenerator do
     }
 
     dungeon
-    |> Map.put(:danger, DungeonGenerator.Danger.generate_danger())
-    |> Map.put(:entrance, DungeonGenerator.Entrance.generate_entrance())
+    |> Map.put(:danger, generate_danger())
+    |> Map.put(:entrance, generate_entrance())
     |> Map.put(:feature, generate_feature())
     |> Map.put(:guardian, generate_guardian())
     |> Map.put(:name, DungeonGenerator.Name.generate_name())
@@ -78,12 +95,24 @@ defmodule DungeonGenerator do
     |> Map.put(:status, generate_status())
   end
 
+  def generate_danger do
+    Enum.random(@dangers)
+  end
+
+  def generate_entrance do
+    Enum.random(@entrances)
+  end
+
   def generate_feature do
     Enum.random(@features)
   end
 
   def generate_guardian do
     Enum.random(@guardians)
+  end
+
+  def generate_occupants do
+    Enum.random(@occupants)
   end
 
   def generate_reason do
@@ -100,9 +129,5 @@ defmodule DungeonGenerator do
     else
       "Inactive, because #{Enum.random(@inactive_status_reasons)}"
     end
-  end
-
-  def generate_occupants do
-    Enum.random(@occupants)
   end
 end
