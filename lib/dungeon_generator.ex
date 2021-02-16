@@ -26,6 +26,16 @@ defmodule DungeonGenerator do
     "of the curse."
   ]
 
+  @occupants [
+    "A vengeful cabal of undead porcelain dolls.",
+    "An enormous, hovering skull with a piercing gaze.",
+    "A family of 5. Desperate, hungry and afraid.",
+    "Heretic cult lead by a possessed 11-year old.",
+    "Desperate inquisitors dying slowly of a witch's curse.",
+    "A Bark-Witch and her root-children.",
+    "Dissident courtiers dedicated to the occult."
+  ]
+
   def generate do
     dungeon = %{
       :danger => nil,
@@ -45,7 +55,7 @@ defmodule DungeonGenerator do
     |> Map.put(:feature, DungeonGenerator.Feature.generate_feature())
     |> Map.put(:guard, DungeonGenerator.Guard.generate_guard())
     |> Map.put(:name, DungeonGenerator.Name.generate_name())
-    |> Map.put(:occupants, DungeonGenerator.Occupants.generate_occupants())
+    |> Map.put(:occupants, DungeonGenerator.generate_occupants())
     |> Map.put(:reason_to_visit, DungeonGenerator.generate_reason())
     |> Map.put(:status, DungeonGenerator.generate_status())
   end
@@ -64,5 +74,9 @@ defmodule DungeonGenerator do
     else
       "Inactive, because #{Enum.random(@inactive_status_reasons)}"
     end
+  end
+
+  def generate_occupants do
+    Enum.random(@occupants)
   end
 end
