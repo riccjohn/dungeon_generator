@@ -9,6 +9,15 @@ defmodule DungeonGenerator do
   ## Example
     iex> DungeonGenerator.generate
   """
+  @guardians [
+    "A (probably) harmless, petrified wyvern.",
+    "Rows upon rows of glass statues. One is alive.",
+    "Inquisitors. Possibly corrupt.",
+    "A tangle of withered tendrils. They come alive!",
+    "3 one-eyed scum playing dice.",
+    "Graves, pits, cracks and burrows. Concealed."
+  ]
+
   @reasons [
     "A promise of treasure and death",
     "You are cursed. The Plague-Bearer who dwells in the dungeon can lift it, they say.",
@@ -41,7 +50,7 @@ defmodule DungeonGenerator do
       :danger => nil,
       :entrance => nil,
       :feature => nil,
-      :guard => nil,
+      :guardian => nil,
       :name => nil,
       :occupants => nil,
       :reason_to_visit => nil,
@@ -53,11 +62,15 @@ defmodule DungeonGenerator do
     |> Map.put(:danger, DungeonGenerator.Danger.generate_danger())
     |> Map.put(:entrance, DungeonGenerator.Entrance.generate_entrance())
     |> Map.put(:feature, DungeonGenerator.Feature.generate_feature())
-    |> Map.put(:guard, DungeonGenerator.Guard.generate_guard())
+    |> Map.put(:guardian, DungeonGenerator.generate_guardian())
     |> Map.put(:name, DungeonGenerator.Name.generate_name())
     |> Map.put(:occupants, DungeonGenerator.generate_occupants())
     |> Map.put(:reason_to_visit, DungeonGenerator.generate_reason())
     |> Map.put(:status, DungeonGenerator.generate_status())
+  end
+
+  def generate_guardian do
+    Enum.random(@guardians)
   end
 
   def generate_reason do
