@@ -20,6 +20,12 @@ defmodule DungeonGenerator do
     "Someone you know is supposed to have been dragged here."
   ]
 
+  @inactive_status_reasons [
+    "it is nearly forgotten and no one that enters may leave.",
+    "the place was invaded.",
+    "of the curse."
+  ]
+
   def generate do
     dungeon = %{
       :danger => nil,
@@ -41,10 +47,22 @@ defmodule DungeonGenerator do
     |> Map.put(:name, DungeonGenerator.Name.generate_name())
     |> Map.put(:occupants, DungeonGenerator.Occupants.generate_occupants())
     |> Map.put(:reason_to_visit, DungeonGenerator.generate_reason())
-    |> Map.put(:status, DungeonGenerator.Status.rand_status())
+    |> Map.put(:status, DungeonGenerator.generate_status())
   end
 
   def generate_reason do
     Enum.random(@reasons)
+  end
+
+  def generate_status do
+    status =
+      [true, false]
+      |> Enum.random()
+
+    if status do
+      "Still active"
+    else
+      "Inactive, because #{Enum.random(@inactive_status_reasons)}"
+    end
   end
 end
