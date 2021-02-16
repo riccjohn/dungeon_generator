@@ -2,7 +2,7 @@ defmodule DungeonGenerator.Entrance do
   use Ecto.Schema
 
   schema "entrances" do
-    field :text, :string
+    field(:text, :string)
   end
 
   def changeset(entrance, params \\ %{}) do
