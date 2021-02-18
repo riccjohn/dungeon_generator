@@ -121,9 +121,9 @@ defmodule DungeonGenerator do
   end
 
   def generate_rooms do
-    # TODO: I'd like to use a range here instead of a list
     num_rooms =
-      [2, 3, 4, 5, 6]
+      [2..6]
+      |> to_list
       |> Enum.random()
 
     rooms = for i <- 1..num_rooms, do: generate_room(i)
