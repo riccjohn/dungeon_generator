@@ -92,6 +92,7 @@ defmodule DungeonGenerator do
     |> Map.put(:name, DungeonGenerator.Name.generate_name())
     |> Map.put(:occupants, generate_occupants())
     |> Map.put(:reason_to_visit, generate_reason())
+    |> Map.put(:rooms, generate_rooms())
     |> Map.put(:status, generate_status())
   end
 
@@ -119,6 +120,15 @@ defmodule DungeonGenerator do
     Enum.random(@reasons)
   end
 
+  def generate_rooms do
+    num_rooms = [2, 3, 4, 5, 6]
+      |> Enum.random
+
+
+    rooms = for i <- 1..num_rooms, do: generate_room(i)
+    rooms
+  end
+
   def generate_status do
     status =
       [true, false]
@@ -129,5 +139,53 @@ defmodule DungeonGenerator do
     else
       "Inactive, because #{Enum.random(@inactive_status_reasons)}"
     end
+  end
+
+  defp generate_room(id) do
+    room_table_a = [
+      "childish-inscriptions",
+      "exquisite-chandeliers",
+      "bloodied-beds",
+      "flooded",
+      "leaning",
+      "upside-down-candles",
+      "fire-damage",
+      "black-ink",
+      "torture-chamber",
+      "sooty-walls",
+      "freezing-draft",
+      "creaking-doors",
+      "compact-darkness",
+      "locked-sarcophagi",
+      "obscure-literature",
+      "abyssal-pits",
+      "whispering",
+      "splattered-paint",
+      "full-of-debris",
+      "cracked-sacrificial-altar",
+      "throne-remains",
+      "smoke-filled",
+      "bonfire",
+      "piles-of-feathers",
+      "hypnotic-inscriptions",
+      "terrifying-inscriptions",
+      "teleporting-inscriptions",
+      "rotting-food",
+      "bloody-sacrificial-altar",
+      "small-aquarium",
+      "cracked-sarcophagi",
+      "crawling-with-bugs",
+      "weapons-and-parts",
+      "tally-marks",
+      "charnel-house",
+      "decapitated-statue",
+      "box-of-ants"
+    ]
+    description = Enum.random(room_table_a)
+      |> String.capitalize
+
+    room = %{ id: id, description: description }
+
+    room
   end
 end
