@@ -16,12 +16,12 @@ defmodule DungeonGenerator do
   ]
 
   @entrances [
-    "The gaping mouth of a church-sized glass skull.",
+    "The gaping mouth of a church sized glass skull.",
     "An inverted church. The climb to the door is perilous.",
     "A gate between cracked ice on the Kergüs waste.",
     "Blackened cliffside gate just above Lake Onda's surface.",
     "A circle of obelisks. A hole in the ground.",
-    "A gate inside a sarcophagus in Graven-Tosk.",
+    "A gate inside a sarcophagus in Graven Tosk.",
     "An impossibly large door.",
     "Seven dead trees in The Valley of the Unfortunate Undead surround a simple door."
   ]
@@ -40,7 +40,7 @@ defmodule DungeonGenerator do
     "Rows upon rows of glass statues. One is alive.",
     "Inquisitors. Possibly corrupt.",
     "A tangle of withered tendrils. They come alive!",
-    "3 one-eyed scum playing dice.",
+    "3 one eyed scum playing dice.",
     "Graves, pits, cracks and burrows. Concealed."
   ]
 
@@ -54,20 +54,20 @@ defmodule DungeonGenerator do
     "A vengeful cabal of undead porcelain dolls.",
     "An enormous, hovering skull with a piercing gaze.",
     "A family of 5. Desperate, hungry and afraid.",
-    "Heretic cult lead by a possessed 11-year old.",
+    "Heretic cult lead by a possessed 11 year old.",
     "Desperate inquisitors dying slowly of a witch's curse.",
-    "A Bark-Witch and her root-children.",
+    "A Bark Witch and her root children.",
     "Dissident courtiers dedicated to the occult."
   ]
 
   @reasons [
     "A promise of treasure and death",
-    "You are cursed. The Plague-Bearer who dwells in the dungeon can lift it, they say.",
+    "You are cursed. The Plague Bearer who dwells in the dungeon can lift it, they say.",
     "Rumors of an enormous treasure, presumably cursed.",
-    "A promise of answers to age-old questions.",
+    "A promise of answers to age old questions.",
     "You have been sentenced to Dungeon Death. Survive and be free.",
     "A strange and hypnotic star guided you here.",
-    "A promise of answers to age-old questions.",
+    "A promise of answers to age old questions.",
     "Someone you know is supposed to have been dragged here."
   ]
 
@@ -121,9 +121,10 @@ defmodule DungeonGenerator do
   end
 
   def generate_rooms do
-    num_rooms = [2, 3, 4, 5, 6]
-      |> Enum.random
-
+    # TODO: I'd like to use a range here instead of a list
+    num_rooms =
+      [2, 3, 4, 5, 6]
+      |> Enum.random()
 
     rooms = for i <- 1..num_rooms, do: generate_room(i)
     rooms
@@ -143,48 +144,83 @@ defmodule DungeonGenerator do
 
   defp generate_room(id) do
     room_table_a = [
-      "childish-inscriptions",
-      "exquisite-chandeliers",
-      "bloodied-beds",
+      "childish inscriptions",
+      "exquisite chandeliers",
+      "bloodied beds",
       "flooded",
       "leaning",
-      "upside-down-candles",
-      "fire-damage",
-      "black-ink",
-      "torture-chamber",
-      "sooty-walls",
-      "freezing-draft",
-      "creaking-doors",
-      "compact-darkness",
-      "locked-sarcophagi",
-      "obscure-literature",
-      "abyssal-pits",
+      "upside down candles",
+      "fire damage",
+      "black ink",
+      "torture chamber",
+      "sooty walls",
+      "freezing draft",
+      "creaking doors",
+      "compact darkness",
+      "locked sarcophagi",
+      "obscure literature",
+      "abyssal pits",
       "whispering",
-      "splattered-paint",
-      "full-of-debris",
-      "cracked-sacrificial-altar",
-      "throne-remains",
-      "smoke-filled",
+      "splattered paint",
+      "full of debris",
+      "cracked sacrificial altar",
+      "throne remains",
+      "smoke filled",
       "bonfire",
-      "piles-of-feathers",
-      "hypnotic-inscriptions",
-      "terrifying-inscriptions",
-      "teleporting-inscriptions",
-      "rotting-food",
-      "bloody-sacrificial-altar",
-      "small-aquarium",
-      "cracked-sarcophagi",
-      "crawling-with-bugs",
-      "weapons-and-parts",
-      "tally-marks",
-      "charnel-house",
-      "decapitated-statue",
-      "box-of-ants"
+      "piles of feathers",
+      "hypnotic inscriptions",
+      "terrifying inscriptions",
+      "teleporting inscriptions",
+      "rotting food",
+      "bloody sacrificial altar",
+      "small aquarium",
+      "cracked sarcophagi",
+      "crawling with bugs",
+      "weapons and parts",
+      "tally marks",
+      "charnel house",
+      "decapitated statue",
+      "box of ants"
     ]
-    description = Enum.random(room_table_a)
-      |> String.capitalize
 
-    room = %{ id: id, description: description }
+    room_table_b = [
+      "incomprehensible scroll",
+      "smashed game board",
+      "shattered glass",
+      "full of corpses",
+      "animal cadaver",
+      "bone chair",
+      "ruined strawmen",
+      "mirrors everywhere",
+      "nets from ceiling",
+      "heavy chest",
+      "weird shadows",
+      "dog sized beetle",
+      "covered in cobwebs",
+      "echoing words",
+      "odd rock formation",
+      "hard to breathe",
+      "humming curse",
+      "chewed hempen rope",
+      "rotblack sludge",
+      "unlocked chains",
+      "hanging statue",
+      "moldy troughs",
+      "gargoyles",
+      "dead dog"
+    ]
+
+    description_a =
+      Enum.random(room_table_a)
+      |> String.capitalize()
+
+    description_b =
+      Enum.random(room_table_b)
+      |> String.capitalize()
+
+    description = "#{description_a}. #{description_b}."
+
+    room = %{id: id, description: description}
 
     room
   end
