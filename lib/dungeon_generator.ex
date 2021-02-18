@@ -121,10 +121,7 @@ defmodule DungeonGenerator do
   end
 
   def generate_rooms do
-    num_rooms =
-      [2..6]
-      |> to_list
-      |> Enum.random()
+    num_rooms = Enum.random(2..6)
 
     rooms = for i <- 1..num_rooms, do: generate_room(i)
     rooms
