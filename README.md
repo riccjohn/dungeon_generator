@@ -4,6 +4,7 @@
 
 A heavy metal dungeon generator meant to be used with [Mörk Borg](https://morkborg.com/), but is game-agnostic aside from any monster stats.
 
+![MORK BORG logo](lib/assets/CompWith_MORKBORG_vert.svg)
 ## Installation
 
 Will eventually have a full front-end, but for now:
@@ -54,3 +55,8 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/dungeon_generator](https://hexdocs.pm/dungeon_generator).
+
+
+_Dungeon Generator is an independent production by John Riccardi and is not affiliated with Ockult Örtmästare Games or Stockholm Kartell. It is published under the MÖRK BORG Third Party License._
+
+_MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell._
