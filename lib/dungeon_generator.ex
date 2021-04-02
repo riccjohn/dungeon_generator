@@ -72,28 +72,17 @@ defmodule DungeonGenerator do
   ]
 
   def generate do
-    dungeon = %{
-      :danger => nil,
-      :entrance => nil,
-      :feature => nil,
-      :guardian => nil,
-      :name => nil,
-      :occupants => nil,
-      :reason_to_visit => nil,
-      :rooms => %{},
-      :status => nil
+    %{
+      :danger => generate_danger(),
+      :entrance => generate_entrance(),
+      :feature => generate_feature(),
+      :guardian => generate_guardian(),
+      :name => DungeonGenerator.Name.generate_name(),
+      :occupants => generate_occupants(),
+      :reason_to_visit => generate_reason(),
+      :rooms => generate_rooms(2, 6),
+      :status => generate_status()
     }
-
-    dungeon
-    |> Map.put(:danger, generate_danger())
-    |> Map.put(:entrance, generate_entrance())
-    |> Map.put(:feature, generate_feature())
-    |> Map.put(:guardian, generate_guardian())
-    |> Map.put(:name, DungeonGenerator.Name.generate_name())
-    |> Map.put(:occupants, generate_occupants())
-    |> Map.put(:reason_to_visit, generate_reason())
-    |> Map.put(:rooms, generate_rooms())
-    |> Map.put(:status, generate_status())
   end
 
   def generate_danger do
@@ -120,8 +109,10 @@ defmodule DungeonGenerator do
     Enum.random(@reasons)
   end
 
-  def generate_rooms do
-    num_rooms = Enum.random(2..6)
+  def generate_rooms(min, max) do
+    max < min && raise ArgumentError, message: "Min value must be lower than max value"
+
+    num_rooms = Enum.random(min..max)
 
     rooms = for i <- 1..num_rooms, do: generate_room(i)
     rooms
